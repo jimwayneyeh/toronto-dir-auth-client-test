@@ -118,9 +118,9 @@ public class Authentication {
 	}
 	
 	public String createTenant (String adminTicket, String tenantName) {
-		// TODO
+		// TODO Create default privilege to fulfill the requirement of directory's API.
 		JsonObject priviledge = new JsonObject();
-		priviledge.add("_file_sync", new JsonObject());
+		priviledge.add("_file_sync", new JsonParser().parse("{'_quota': 0, '_download_band': 0, '_upload_band': 0, '_version_count': 0}"));
 		
 		HttpPost postRequest = null;
 		try {
