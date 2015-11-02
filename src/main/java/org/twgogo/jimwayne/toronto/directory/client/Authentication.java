@@ -118,6 +118,10 @@ public class Authentication {
 	}
 	
 	public String createTenant (String adminTicket, String tenantName) {
+		// TODO
+		JsonObject priviledge = new JsonObject();
+		priviledge.add("_file_sync", new JsonObject());
+		
 		HttpPost postRequest = null;
 		try {
 			// ---------------------------------- //
@@ -125,7 +129,7 @@ public class Authentication {
 			// ---------------------------------- //
 			JsonObject postJSON = new JsonObject();
 			postJSON.addProperty("tenant_name", tenantName);
-			postJSON.add("privileges", new JsonObject());
+			postJSON.add("privileges", priviledge);
 			log.debug("Post body for creating tenant: {}", postJSON);
 			
 			StringEntity requestBody = new StringEntity(postJSON.toString(), Charset.forName("UTF-8"));
